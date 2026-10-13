@@ -1,0 +1,14 @@
+# Local build dependencies, extracted references, and test scratch data.
+/work/
+
+# Packaged releases and compiled VST3 bundles are distributed separately.
+/outputs/*.exe
+/outputs/*.zip
+*.vst3/
+
+# Local compiler and editor state.
+.vs/
+build/
+*.user
+*.pdb
+*.obj

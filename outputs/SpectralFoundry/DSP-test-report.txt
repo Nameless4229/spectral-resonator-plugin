@@ -1,0 +1,45 @@
+sample rate 44100 neutral max error 2.98023e-08
+PASS dry path reconstruction and reported latency
+sample rate 48000 neutral max error 2.98023e-08
+PASS dry path reconstruction and reported latency
+sample rate 96000 neutral max error 2.98023e-08
+PASS dry path reconstruction and reported latency
+PASS state round trip
+PASS all presets produce finite bounded audio
+PASS effect changes the signal
+Processed 19.2 seconds of stereo audio in 0.469634 seconds; peak 0.489036
+PASS mono, extreme automation, irregular and zero-sized blocks
+PASS host bypass preserves latency and unity gain
+PASS partitioned minimum-phase engine identity impulse and channel isolation
+Macro depth level-normalized difference 1.34481
+PASS macro changes timbre after level normalization
+Macro depth spectral shape difference 13.6054 dB
+PASS macro changes spectral shape independently of level and phase
+Macro position level-normalized difference 1.40145
+PASS macro changes timbre after level normalization
+Macro position spectral shape difference 13.9201 dB
+PASS macro changes spectral shape independently of level and phase
+Macro cutoff level-normalized difference 1.36159
+PASS macro changes timbre after level normalization
+Macro cutoff spectral shape difference 20.2998 dB
+PASS macro changes spectral shape independently of level and phase
+Macro resonance level-normalized difference 1.38957
+PASS macro changes timbre after level normalization
+Macro resonance spectral shape difference 11.5832 dB
+PASS macro changes spectral shape independently of level and phase
+Macro wump level-normalized difference 1.3196
+PASS macro changes timbre after level normalization
+Macro wump spectral shape difference 19.4663 dB
+PASS macro changes spectral shape independently of level and phase
+Macro chord level-normalized difference 1.29151
+PASS macro changes timbre after level normalization
+Macro chord spectral shape difference 10.7843 dB
+PASS macro changes spectral shape independently of level and phase
+Macro pitch level-normalized difference 0.473266
+PASS macro changes timbre after level normalization
+Macro pitch spectral shape difference 2.99134 dB
+PASS macro changes spectral shape independently of level and phase
+Macro sub level-normalized difference 0.96527
+PASS macro changes timbre after level normalization
+Macro sub spectral shape difference 3.82081 dB
+PASS macro changes spectral shape independently of level and phase

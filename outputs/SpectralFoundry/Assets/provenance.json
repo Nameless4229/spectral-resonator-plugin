@@ -1,0 +1,35 @@
+[
+  {
+    "table": 0,
+    "name": "(Bounce) [2026-10-07 163230]",
+    "frames": 256,
+    "samples_per_frame": 2048,
+    "phase_mode": "minimum",
+    "cutoff": "694.59985",
+    "resonance": "2.033017",
+    "mix": "1",
+    "flac_sha256": "683b6ff24a553ce661afed95ef2fcfb4fa82aa5231308ec5ed465fd29dccc455"
+  },
+  {
+    "table": 1,
+    "name": "(Bounce) [2026-10-07 164257]",
+    "frames": 256,
+    "samples_per_frame": 2048,
+    "phase_mode": "minimum",
+    "cutoff": "440",
+    "resonance": "1",
+    "mix": "1",
+    "flac_sha256": "95937321a5c8b5f34bf1fcfb39cfa704233012aa17caae42504ce0a6df7eb679"
+  },
+  {
+    "table": 2,
+    "name": "(Bounce) [2026-10-07 165013]",
+    "frames": 256,
+    "samples_per_frame": 2048,
+    "phase_mode": "minimum",
+    "cutoff": "985.9383",
+    "resonance": "1",
+    "mix": "1",
+    "flac_sha256": "d380736ab31221071c5a453ef11ad21886bc44d7de7920f814e5abbfc33b566b"
+  }
+]

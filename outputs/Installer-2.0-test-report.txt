@@ -1,0 +1,6 @@
+PASS fresh install to editable custom path with spaces; installed binary hash matches release
+PASS version 1 upgrade; complete previous bundle backup retains original binary hash
+PASS reinstall same version is idempotent; no duplicate backup or leftover staging directory
+PASS bundled source archive integrity, rack engine source, JUCE dependency, and documentation
+PASS release installer embeds Windows administrator manifest for system VST3 installation
+Installer logic was exercised with an identical-code non-elevated test build in workspace directories. The elevated release GUI and actual FL Studio rescan were not run.

@@ -1,0 +1,3 @@
+dcb777ecfbab5ceb6694dd323a8693f08d4287ba70d19986b61b85696e627a83  SpectralFoundry-Windows-VST3.zip
+4ec0de8463441a2fb0707f2fbd88dbc726e9b30debee22a02cc80549e1be1317  SpectralFoundry-Source.zip
+2e938538b6166768b866166027ff22dcd5d8f2062c6d9bc8c43924af4b3c4e55  SpectralFoundry\Spectral Foundry.vst3\Contents\x86_64-win\Spectral Foundry.vst3

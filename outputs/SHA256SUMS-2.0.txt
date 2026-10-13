@@ -1,0 +1,3 @@
+79c35a999328b766ec300da577a2ab84279f4e7fa818315e47a29393da483f8f  SpectralFoundry-Setup-2.0.exe
+13ecdb6268751569c9584b08a19369b77c935c35a2c8bcd3262afd31e2a69e1e  SpectralFoundry-2.0-Source.zip
+41aede186540918eac269f68781d9e7f2258cdf45ced18712387be071750c8ef  SpectralFoundry/Spectral Foundry.vst3/Contents/x86_64-win/Spectral Foundry.vst3

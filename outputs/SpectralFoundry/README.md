@@ -10,7 +10,7 @@ This Windows x64 VST3 audio effect uses the **three actual embedded wavetables**
 4. In FL Studio, open **Options > Manage plugins**. Enable **Verify plugins**, **Rescan previously verified plugins**, and **Rescan plugins with errors**, then click **Find installed plugins**.
 5. Load **Spectral Foundry** in a **Mixer effect slot**, then select **01 ADG - saved rack** or **02 Video - Wump 70**.
 
-The editor must say **VERSION 2 / ORIGINAL RACK TABLES + MACRO ROUTING**. If it does not, FL is loading an older installed copy. The plugin identifier is retained so projects can find it, but version 2 deliberately changes its sound. Existing projects restore their old knob values; select a new preset to hear the new defaults. Keep the previous installer/backup for projects that need the old sound.
+The editor must say **VERSION 2 / ORIGINAL RACK TABLES + MACRO ROUTING**. If it does not, FL is loading an older installed copy. The plugin identifier is retained so projects can find it, but version 2 deliberately changes its sound. Existing projects restore their old knob values; new copies of the plugin start at the settings described below. Keep the previous installer/backup for projects that need the old sound.
 
 This is an audio effect and needs an incoming sound. Use a harmonically rich bass/growl/saw/drum loop. A pure sine has little upper-frequency content to filter. The plugin is Windows VST3, not an AAX plugin or macOS binary. FL's VST3 locations are fixed; a custom VST2 search path is not a substitute.
 
@@ -26,13 +26,31 @@ This is an audio effect and needs an incoming sound. Use a harmonically rich bas
 - Full-wet sine folding follows the summed rack. The old upper-band-only fold blend has been removed.
 - The filter engine is minimum-phase FIR convolution rather than linear-phase STFT masking. Fixed delay is now **256 samples** (5.33 ms at 48 kHz), reported to the host and applied to the dry/bypass path.
 
+## Position range (Spectral Resonator build)
+
+In the original rack the table position is `Position/127 + 0.5 * (Wump/127) * (Depth/100)`, clamped to 1. With a large Shaper offset the top of the Position knob stops having any effect, and the bottom cannot go below the offset. This build always spreads the knob over the whole table: `position = k * (1 + g) / (1 + g * k)` with `k = Position/127` and `g = 3 * 0.5 * (Wump/127) * (Depth/100)`. Knob 0 is always table position 0 and knob 127 is always 1, the curve is smooth and strictly rising, and Depth and Wump bend it instead of clamping it. With Depth or Wump at 0 the offset is 0 and the mapping is the original linear one.
+
+## Snap to notes (Spectral Resonator UI)
+
+The third table's root note is the Chord Pitch cutoff divided by 24, i.e. `25 * 2^(value/127)` Hz, so the knob covers exactly one octave of roots (G#0 to G1). With **Snap to notes** on (the default) the knob steps between the 12 semitones, which sit `127/12 = 10.58` units apart (value 91.4 is E1, so the saved rack's 91.0 becomes exactly E1, 5 cents higher). Turn it off for the original continuous mapping. It is stored as the `snap` parameter and is not changed by presets.
+
+## Minor / major chord quality (Spectral Resonator build)
+
+The third table's emphasised notes above its root are the minor pentatonic (0, 3, 5, 7, 10 semitones; Em7(11) on E). **MAJOR** (switch beside Chord Pitch, parameter `major`, off by default) scales that table's cutoff by `2^(-3/12)`, i.e. retunes the same filter down a minor third. The emphasised notes become 0, 2, 4, 7, 9 above the same root, the major pentatonic (a 6/9 chord), so the root shown by Chord Pitch is still the root you hear. It is exact: major at Chord Pitch v equals minor at v - 31.75.
+
+## OTT (replaces Peak Taming in this build)
+
+The old adaptive de-harsh stage (an approximation of soothe2) is gone. The `tame` parameter is now **OTT**: three-band upward and downward compression after the multiband dynamics and before the sine fold. Bands split at 88.3 Hz and 2.5 kHz (Linkwitz-Riley, phase aligned); each band is compressed 8:1 above -24 dB and 4:1 upward below -34 dB (boost capped at 36 dB and faded out for near-silence), with attack 13.5 / 5.3 / 1.6 ms, release 132 / 282 / 140 ms and +1.5 / 0 / +2.5 dB makeup. The knob is the depth: it scales the gain change in dB, so 0% (the default) is bypassed and 100% is the full effect.
+
 ## Using the controls
 
 Start with **02 Video - Wump 70** and sweep **Wump** between 40 and 120. Then adjust **Position**, **Cutoff**, and **Resonance**. For pronounced pitched notches, sweep **Chord Depth** and **Chord Pitch**. These macros are intentionally interdependent, as in the rack. At maximum depth/position the first table position can hit its upper limit; moving Position downward or reducing Depth restores room for the Shaper offset.
 
 **Movement** is an optional extra LFO and defaults to zero; the reference uses Manual Shaper mode. **Rate** only affects this extra movement. **Space** defaults to the rack's 21% wet setting. **Compression** at 100% applies the recovered multiband settings; lowering it reduces compression and its associated makeup/input boosts. **Peak Taming** controls an independent adaptive de-harsh stage centered at the saved soothe2 high-frequency focus bands. **Fold Drive** is extra drive before the final sine fold; the rack setting is 0 dB. **Dry / Wet** is the true overall effect blend.
 
-Preset 01 uses the ADG values: Depth 100%, Position 67, Cutoff 65, Resonance 96, Wump 127, Chord Depth 79, Chord Pitch 91, crossover 180.36 Hz. Presets 02–04 use visible settings from the video. Preset 05 adds movement/drive, and 06 is a latency-aligned dry comparison.
+## Starting settings and look
+
+There are no presets. A new copy of the plugin starts at the former "Blossom" settings: Spectral Depth 56.4%, Position 43.5, Cutoff 73.3, Resonance 63.9, Wump 127, Chord Depth 93.0, Chord Pitch 91.5, Sub Crossover 10 Hz, Motion Rate 0.395 Hz, Motion Amount 34.4%, Space 40%, Fold Drive 0 dB, OTT 100%, Compression 0%, Dry / Wet 100%, Input and Output 0 dB. Double-clicking a knob returns it to these values. The interface always uses the Blossom look: an ivory body, plum text, rose / coral / gold / sky accents, and the blossom photo behind the spectrum.
 
 ## Accuracy and remaining differences
 
@@ -67,3 +85,11 @@ Code is supplied under AGPL-3.0; see `LICENSE.txt`. User-supplied wavetable asse
 - [Ableton Shaper](https://www.ableton.com/en/manual/max-for-live-devices/#shaper)
 - [Ableton audio effects](https://www.ableton.com/en/manual/live-audio-effect-reference/)
 - [FL Studio plugin installation](https://www.image-line.com/fl-studio-learning/fl-studio-online-manual/html/basics_externalplugins.htm)
+
+## Credits
+
+Photo by [AJ](https://unsplash.com/@ajny) on [Unsplash](https://unsplash.com)
+
+Photos on [Unsplash](https://unsplash.com).
+
+The interface font is Audiowide, licensed under the SIL Open Font License (see `Assets/Audiowide-OFL.txt`).

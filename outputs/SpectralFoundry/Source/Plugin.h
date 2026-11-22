@@ -17,7 +17,7 @@ class SpectralFoundry final : public juce::AudioProcessor
 {
 public:
     SpectralFoundry();
-    const juce::String getName() const override { return "Spectral Foundry"; }
+    const juce::String getName() const override { return "Spectral Resonator"; }
     void prepareToPlay(double, int) override;
     void releaseResources() override {}
     void reset() override;

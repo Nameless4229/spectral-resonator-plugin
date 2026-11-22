@@ -1,4 +1,4 @@
-# Spectral Foundry 2.0 — rack-based rebuild
+# Spectral Resonator — rack-based rebuild
 
 This Windows x64 VST3 audio effect uses the **three actual embedded wavetables** from your `NAMELESS - Spectral Resonator.adg`. Version 1 used invented spectral shapes and guessed mappings; version 2 replaces that core.
 
@@ -6,9 +6,9 @@ This Windows x64 VST3 audio effect uses the **three actual embedded wavetables**
 
 1. Close FL Studio and any other DAW using the plugin.
 2. Run **SpectralFoundry-Setup-2.0.exe**, accept the Windows administrator prompt, and keep `C:\Program Files\Common Files\VST3`.
-3. The installer updates the existing Spectral Foundry bundle and backs it up under `%LOCALAPPDATA%\Spectral Foundry\Backups`.
+3. The installer updates the existing Spectral Resonator bundle and backs it up under `%LOCALAPPDATA%\Spectral Resonator\Backups`.
 4. In FL Studio, open **Options > Manage plugins**. Enable **Verify plugins**, **Rescan previously verified plugins**, and **Rescan plugins with errors**, then click **Find installed plugins**.
-5. Load **Spectral Foundry** in a **Mixer effect slot**, then select **01 ADG - saved rack** or **02 Video - Wump 70**.
+5. Load **Spectral Resonator** in a **Mixer effect slot**.
 
 The editor must say **VERSION 2 / ORIGINAL RACK TABLES + MACRO ROUTING**. If it does not, FL is loading an older installed copy. The plugin identifier is retained so projects can find it, but version 2 deliberately changes its sound. Existing projects restore their old knob values; new copies of the plugin start at the settings described below. Keep the previous installer/backup for projects that need the old sound.
 
@@ -44,7 +44,7 @@ The old adaptive de-harsh stage (an approximation of soothe2) is gone. The `tame
 
 ## Using the controls
 
-Start with **02 Video - Wump 70** and sweep **Wump** between 40 and 120. Then adjust **Position**, **Cutoff**, and **Resonance**. For pronounced pitched notches, sweep **Chord Depth** and **Chord Pitch**. These macros are intentionally interdependent, as in the rack. At maximum depth/position the first table position can hit its upper limit; moving Position downward or reducing Depth restores room for the Shaper offset.
+Start from the starting settings and sweep **Wump** between 40 and 120. Then adjust **Position**, **Cutoff**, and **Resonance**. For pronounced pitched notches, sweep **Chord Depth** and **Chord Pitch**. These macros are intentionally interdependent, as in the rack. At maximum depth/position the first table position can hit its upper limit; moving Position downward or reducing Depth restores room for the Shaper offset.
 
 **Movement** is an optional extra LFO and defaults to zero; the reference uses Manual Shaper mode. **Rate** only affects this extra movement. **Space** defaults to the rack's 21% wet setting. **Compression** at 100% applies the recovered multiband settings; lowering it reduces compression and its associated makeup/input boosts. **Peak Taming** controls an independent adaptive de-harsh stage centered at the saved soothe2 high-frequency focus bands. **Fold Drive** is extra drive before the final sine fold; the rack setting is 0 dB. **Dry / Wet** is the true overall effect blend.
 

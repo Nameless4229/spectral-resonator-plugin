@@ -7,7 +7,7 @@ add_subdirectory("${JUCE_DIR}" JUCE-build)
 juce_add_plugin(SpectralFoundry
     COMPANY_NAME "Foundry Audio" BUNDLE_ID "audio.foundry.spectral"
     PLUGIN_MANUFACTURER_CODE Fdry PLUGIN_CODE Sfr1
-    FORMATS VST3 Standalone PRODUCT_NAME "Spectral Foundry"
+    FORMATS VST3 Standalone PRODUCT_NAME "Spectral Resonator"
     IS_SYNTH FALSE NEEDS_MIDI_INPUT FALSE NEEDS_MIDI_OUTPUT FALSE
     COPY_PLUGIN_AFTER_BUILD FALSE VST3_CATEGORIES Fx Filter)
 target_sources(SpectralFoundry PRIVATE Source/Plugin.cpp Source/Editor.cpp)
